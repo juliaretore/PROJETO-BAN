@@ -1,0 +1,31 @@
+create sequence id_musica;
+create table musica(
+	codMusica int NOT NULL UNIQUE,
+	nome varchar(50) NOT NULL,
+	duracao int NOT NULL,
+	arqMusica bytea,
+	visualizacoes int  NOT NULL,
+	letra varchar(6500),
+	nomeArtista varchar(50)  NOT NULL,
+	primary key (codMusica)
+);
+
+create sequence id_playlist;
+create table playlist(
+	codPlaylist int,
+	nome varchar(50)  NOT NULL,
+	descricao varchar(50)  NOT NULL,
+	primary key (codPlaylist)
+);
+
+create sequence id_musicas_playlist;
+create table musicas_playlist(
+	id int,
+	id_musica int,
+	id_playlist int,
+	primary key (id),
+	foreign key (id_musica) references musica,
+	foreign key (id_playlist) references playlist
+);src/apresentacao/PlaylistView$1.class
+
+
