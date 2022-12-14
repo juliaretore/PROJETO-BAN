@@ -1,0 +1,241 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 14.5 (Ubuntu 14.5-0ubuntu0.22.04.1)
+-- Dumped by pg_dump version 14.5 (Ubuntu 14.5-0ubuntu0.22.04.1)
+
+-- Started on 2022-12-14 14:04:33 -03
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- TOC entry 209 (class 1259 OID 32993)
+-- Name: id_musica; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.id_musica
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.id_musica OWNER TO postgres;
+
+--
+-- TOC entry 213 (class 1259 OID 33007)
+-- Name: id_musicas_playlist; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.id_musicas_playlist
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.id_musicas_playlist OWNER TO postgres;
+
+--
+-- TOC entry 211 (class 1259 OID 33001)
+-- Name: id_playlist; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.id_playlist
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.id_playlist OWNER TO postgres;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 210 (class 1259 OID 32994)
+-- Name: musica; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.musica (
+    codmusica integer NOT NULL,
+    nome character varying(50) NOT NULL,
+    duracao integer NOT NULL,
+    arqmusica bytea,
+    visualizacoes integer NOT NULL,
+    letra character varying(6500),
+    nomeartista character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.musica OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 33008)
+-- Name: musicas_playlist; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.musicas_playlist (
+    id integer NOT NULL,
+    id_musica integer,
+    id_playlist integer
+);
+
+
+ALTER TABLE public.musicas_playlist OWNER TO postgres;
+
+--
+-- TOC entry 212 (class 1259 OID 33002)
+-- Name: playlist; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.playlist (
+    codplaylist integer NOT NULL,
+    nome character varying(50) NOT NULL,
+    descricao character varying(50) NOT NULL
+);
+
+
+ALTER TABLE public.playlist OWNER TO postgres;
+
+--
+-- TOC entry 3365 (class 0 OID 32994)
+-- Dependencies: 210
+-- Data for Name: musica; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.musica (codmusica, nome, duracao, arqmusica, visualizacoes, letra, nomeartista) FROM stdin;
+1	Follow You	176	\N	4	My head is haunting me and my heart feels like a ghost I need to feel something, cause Im still so far from home Cross your heart and hope to die Promise me youll never leave my side Show me what I cant see when the spark in your eyes is gone Youve got me on my knees Im your one man cult Cross my heart and hope to die Promise you Ill never leave your side Cause Im telling you youre all I need I promise you youre all I see Cause Im telling you youre all I need Ill never leave So you can drag me through hell If it meant I could hold your hand I will follow you cause Im under your spell And you can throw me to the flames I will follow you, I will follow you Come sink into me and let me breathe you in Ill be your gravity, you be my oxygen So dig two graves cause when you die I swear Ill be leaving by your side So you can drag me through hell If it meant I could hold your hand I will follow you cause Im under you spell And you can throw me to the flames I will follow you so you can drag me through hell If it meant I could hold your hand I will follow you cause Im under you spell And you can throw me to the flames I will follow you, I will follow you I will follow you, I will follow you So you can drag me through hell If it meant I could hold your han I will follow youcause Im under you spell And you can throw me to the flames I will follow you, I will follow you	Bring Me The Horizon
+3	Drownn	246	\N	8	letra letra letra letra	Bring Me The Horizon
+5	Ignorance	213	\N	2	bla bla bla bla	Paramore
+6	Disguise	230	\N	6	bla bla bla bla	Motionless In White
+4	Shadow Moses	230	\N	4	letra letra letra letra	Bring Me The Horizon
+2	This is Why	163	\N	4	If you have an opinion Maybe you should shove it Or maybe you could scream it Might be best to keep it To yourself (to yourself) To yourself (to yourself) This is why I dont leave the house You say the coast is clear But you wont catch me out Oh, why? This is why Better have conviction Cause we want crimes of passion Survival of the fittest Youre either with us or you can keep it To yourself (to yourself) To yourself (to yourself) To yourself, yourself, yourself To yourself (to yourself) This is why I dont leave the house You say the coast is clear But you wont catch me out Oh, why? This is why This is why I dont leave the house You say the coast is clear But you wont catch me out Oh, why? This is why One step beyond your door It might as well have been a free fall One step beyond your door Falling down an endless hall One step beyond your door Might as well have been a free fall One step beyond your door And Im floating like a cannonball This is why I dont leave the house You say the coast is clear But you wont catch me out Oh, why? This is why This is why I dont leave the house You say the coast is clear But oh no, you wont catch me out Oh, why? This is why	Paramore
+7	musica	34	\N	0	asda	sa
+\.
+
+
+--
+-- TOC entry 3369 (class 0 OID 33008)
+-- Dependencies: 214
+-- Data for Name: musicas_playlist; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.musicas_playlist (id, id_musica, id_playlist) FROM stdin;
+2	1	2
+3	2	1
+7	3	3
+8	3	2
+9	1	3
+10	4	3
+11	3	1
+12	6	2
+\.
+
+
+--
+-- TOC entry 3367 (class 0 OID 33002)
+-- Dependencies: 212
+-- Data for Name: playlist; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.playlist (codplaylist, nome, descricao) FROM stdin;
+1	Banho	musicas que escuto no banho
+2	Carro	musicas que escuto no carro
+3	Dormir	musicas que escuto para dormir
+\.
+
+
+--
+-- TOC entry 3375 (class 0 OID 0)
+-- Dependencies: 209
+-- Name: id_musica; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.id_musica', 7, true);
+
+
+--
+-- TOC entry 3376 (class 0 OID 0)
+-- Dependencies: 213
+-- Name: id_musicas_playlist; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.id_musicas_playlist', 12, true);
+
+
+--
+-- TOC entry 3377 (class 0 OID 0)
+-- Dependencies: 211
+-- Name: id_playlist; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.id_playlist', 4, true);
+
+
+--
+-- TOC entry 3218 (class 2606 OID 33000)
+-- Name: musica musica_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.musica
+    ADD CONSTRAINT musica_pkey PRIMARY KEY (codmusica);
+
+
+--
+-- TOC entry 3222 (class 2606 OID 33012)
+-- Name: musicas_playlist musicas_playlist_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.musicas_playlist
+    ADD CONSTRAINT musicas_playlist_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 3220 (class 2606 OID 33006)
+-- Name: playlist playlist_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.playlist
+    ADD CONSTRAINT playlist_pkey PRIMARY KEY (codplaylist);
+
+
+--
+-- TOC entry 3223 (class 2606 OID 33013)
+-- Name: musicas_playlist musicas_playlist_id_musica_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.musicas_playlist
+    ADD CONSTRAINT musicas_playlist_id_musica_fkey FOREIGN KEY (id_musica) REFERENCES public.musica(codmusica);
+
+
+--
+-- TOC entry 3224 (class 2606 OID 33018)
+-- Name: musicas_playlist musicas_playlist_id_playlist_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.musicas_playlist
+    ADD CONSTRAINT musicas_playlist_id_playlist_fkey FOREIGN KEY (id_playlist) REFERENCES public.playlist(codplaylist);
+
+
+-- Completed on 2022-12-14 14:04:34 -03
+
+--
+-- PostgreSQL database dump complete
+--
+
