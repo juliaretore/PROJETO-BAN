@@ -26,6 +26,6 @@ create table musicas_playlist(
 	primary key (id),
 	foreign key (id_musica) references musica,
 	foreign key (id_playlist) references playlist
-);src/apresentacao/PlaylistView$1.class
+);
 
 
